@@ -738,35 +738,6 @@ function playMusic() {
   // Gọi lại mỗi 10 giây
   setInterval(spawnCloud, 10000);
 </script>
-<script>
-// Tự động chèn dòng bản quyền và khóa lại
-(function() {
-  const div = document.createElement('div');
-  div.innerHTML = "© Được tạo bởi <strong>Mai Ngọc Hiếu</strong>";
-  div.style.position = 'fixed';
-  div.style.bottom = '8px';
-  div.style.left = '8px';
-  div.style.background = 'black';
-  div.style.color = 'white';
-  div.style.padding = '6px 12px';
-  div.style.fontSize = '14px';
-  div.style.borderRadius = '8px';
-  div.style.zIndex = '999999';
-  div.style.fontFamily = 'Arial, sans-serif';
-  div.style.userSelect = 'none';
-  div.setAttribute("id", "copyright-lock");
-  Object.freeze(div); // Khóa đối tượng lại
-  document.body.appendChild(div);
-
-  // Ngăn bị xóa
-  const observer = new MutationObserver(() => {
-    const el = document.getElementById("copyright-lock");
-    if (!el) document.body.appendChild(div);
-  });
-  observer.observe(document.body, { childList: true });
-})();
-</script>
-
 
 
 

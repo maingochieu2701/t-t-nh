@@ -782,26 +782,6 @@ music.play();
 // Khi bài hát kết thúc, phát bài tiếp theo
 music.addEventListener('ended', playNextTrack);
 </script>
-<script>
-const bgImages = [
-  "./image/gen-h-vi.jpg",
-  "./image/gen-h-vi1.jpg",
-  "./image/gen-h-vi2.jpg",
-  "./image/gen-h-vi3.jpg",
-  "./image/gen-h-vi4.jpg"
-];
-
-let currentBg = 0;
-const bgDiv = document.getElementById("bg-image");
-
-function switchBackgroundImage() {
-  bgDiv.style.backgroundImage = `url('${bgImages[currentBg]}')`;
-  currentBg = (currentBg + 1) % bgImages.length;
-}
-
-switchBackgroundImage();
-setInterval(switchBackgroundImage, 10000);
-</script>
 
 
 

@@ -280,30 +280,6 @@
   </style>
 </head>
 <body>
-  <script>
-const bgImages = [
-  "./image/gen-h-vi.jpg",
-  "./image/gen-h-vi1.jpg",
-  "./image/gen-h-vi2.jpg",
-  "./image/gen-h-vi3.jpg",
-  "./image/gen-h-vi4.jpg"
-];
-
-let currentBg = 0;
-const bgDiv = document.getElementById("bg-image");
-
-function switchBackgroundImage() {
-  bgDiv.style.backgroundImage = `url('${bgImages[currentBg]}')`;
-  currentBg = (currentBg + 1) % bgImages.length;
-}
-
-// Gọi lần đầu
-switchBackgroundImage();
-
-// Chuyển ảnh nền mỗi 10 giây
-setInterval(switchBackgroundImage, 10000);
-</script>
-
   <div id="bg-image" style="
   position: fixed;
   top: 0; left: 0;

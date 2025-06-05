@@ -341,14 +341,24 @@
   <script>
     const container = document.getElementById('container');
       const imageList = [
-    "https://i.imgur.com/Z8a0fJG.png",
-    "https://i.imgur.com/hhgbwRf.png",
-    "https://i.imgur.com/E7Qtb4D.png"
+    "./image/vi.jpg",
+    "/image/vi1.jpg",
+    "/image/vi2.jpg",
+    "/image/vi3.jpg",
+    "/image/vi4.jpg",
+    "/image/vi5.jpg",
+    "/image/vi6.jpg"
   ];
 
   const videoList = [
-    "https://www.w3schools.com/html/mov_bbb.mp4",
-    "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    "/image/vi8.mp4",
+    "/image/video1.mp4",
+    "/image/video2.mp4",
+    "/image/video3.mp4",
+    "/image/video4.mp4",
+    "/image/video5.mp4",
+    "/image/video6.mp4",
+    "/image/video7.mp4",
   ];
 
    const totalImages = 20;
@@ -413,18 +423,27 @@ setInterval(spawnBubble, 500); // mỗi 0.5s tạo 1 bong bóng
     const starsContainer = document.getElementById('stars');
 
     const totalItems = 100;
-    const hearts = ['❤️','💕','💖','💘'];
+    const hearts = ['❤️','💕','💖','💘','🥑','🐷','♒'];
 
     for (let i = 0; i < totalItems; i++) {
       const el = document.createElement('div');
       el.className = 'floating';
 
       if (Math.random() < 0.7) {
-        el.innerText = 'Vương An 🧸';
-      } else {
-        el.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-        el.classList.add('heart');
-      }
+  const names = [
+    '🦭 Ngọc Hiếu 🦭',
+    '💖 N 💖',
+    '🐷 T 🐷',
+    '🥑'
+  ];
+  el.innerText = names[Math.floor(Math.random() * names.length)];
+ 
+  el.classList.add('names');
+}
+
+      
+      
+    
 
       el.style.left = Math.random() * 100 + 'vw';
       el.style.top = -Math.random() * 100 + 'vh';
@@ -456,9 +475,9 @@ setInterval(spawnBubble, 500); // mỗi 0.5s tạo 1 bong bóng
     }
    
 const mascotImages = [
-  "https://i.imgur.com/IuVxwlr.gif",
-  "https://i.imgur.com/vvjIsyX.gif",
-  "https://i.imgur.com/KFAK3a3.gif"
+ "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTkydXYyZnBnejVsbGE3cXM5c3B3cGUzcXhnYXlzeGZjZGxoNzJ6ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lv2VhwHrt6ljhvZ6LF/giphy.gif",
+  "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3M5ZXloY3hiYmhqcGs2cXd3cGV1MjUwc3c5OWh5aG4zcDh1NzNhdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mmfnDaNegqw6wc6KnM/giphy.gif",
+  "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXZtbjV0bzlydmhwbWt3d25zYm91Y21zZmt3YTZuM2VsaGViczFycSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZVrlrgobFr1T1Erk7c/giphy.gif"
 ];
 let mascotIndex = 0;
 
@@ -638,11 +657,16 @@ function spawnCloud() {
   cloud.className = 'cloud';
 
   const options = [
-    '☁️ Mai Ngọc Hiếu 🧸 ☁️',
+    '☁️ Happy ☁️',
     '☁️ ❤️ ☁️',
-    '☁️ Yêu thương ☁️',
-    '☁️ 𝓛𝓸𝓿𝓮 ☁️',
-    '☁️ Nhớ bạn ☁️'
+    '♒27th1♒',
+    '🥑 𝓛𝓸𝓿𝓮 🥑',
+    '🌈 Yêu thương 🌈',
+    '🌟 Mai Ngọc Hiếu 🌟',
+    '🌸 Thảo Vi 🌸',
+    '🌼 Loan 🌼',
+    '💐 N 💐',
+    '💫 T 💫',
   ];
 
   cloud.innerText = options[Math.floor(Math.random() * options.length)];
@@ -722,11 +746,11 @@ function playMusic() {
     cloud.className = 'cloud';
 
     const options = [
-      '☁️ Vương An 🧸 ☁️',
-      '☁️ ❤️ ☁️',
+      '🦭 Mai Ngọc Hiếu 🦭',
+      '🙈 ❤️ Thảo Vi❤️ 🙈',
       '☁️ Yêu thương ☁️',
-      '☁️ 𝓛𝓸𝓿𝓮 ☁️',
-      '☁️ Nhớ bạn ☁️'
+      '🐷 𝓛𝓸𝓿𝓮 🐷',
+      '🙉 Loan 🙉'
     ];
 
     cloud.innerText = options[Math.floor(Math.random() * options.length)];

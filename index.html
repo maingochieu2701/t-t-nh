@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Vương An 🧸 Lung Linh</title>
+  
+  <style>
+    img, video {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+    .cloud {
+  position: absolute;
+  top: 10vh;
+  left: 0;  
+  font-size: 24px;
+  white-space: nowrap;
+  z-index: 2;
+  animation: cloudMove 30s linear infinite;
+  color: white;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ccc;
+}
+
+@keyframes cloudMove {
+  0% {
+    left: -200px;
+    opacity: 0.8;
+  }
+  100% {
+    left: 110vw;
+    opacity: 0;
+  }
+}
+
+
+
+    #campfire {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 5;
+  animation: fire-glow 2s infinite alternate;
+}
+
+@keyframes fire-glow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 100, 0, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 30px rgba(255, 150, 50, 1));
+  }
+}
+
+    .bubble {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: rise 5s linear forwards;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+    .falling-img {
+  pointer-events: none;
+  opacity: 0.8;
+  transform-style: preserve-3d;
+  
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: contain;
+
+
+}
+  html, body {
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+    animation: skyCycle 30s linear infinite;
+    transition: background 1s ease;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  @keyframes skyCycle {
+    0%   { background: linear-gradient(to top, #ff9a9e, #fad0c4); }   /* hồng sáng */
+    25%  { background: linear-gradient(to top, #a18cd1, #fbc2eb); }   /* tím hồng */
+    50%  { background: linear-gradient(to top, #2b1055, #7597de); }   /* đêm xanh */
+    75%  { background: linear-gradient(to top, #fddb92, #d1fdff); }   /* sáng sớm */
+    100% { background: linear-gradient(to top, #ff9a9e, #fad0c4); }   /* quay lại hoàng hôn */
+  }
+
+
+    .scene {
+      width: 100vw;
+      height: 100vh;
+      perspective: 1000px;
+      perspective-origin: center;
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      position: relative;
+      transition: transform 0.1s linear;
+    }
+
+    .floating {
+      position: absolute;
+      white-space: nowrap;
+      color: #fff;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 40px #ff99ff;
+      filter: drop-shadow(0 0 10px #ff00ff);
+      animation: fall linear infinite;
+      transform-style: preserve-3d;
+    }
+
+    .heart {
+      color: #ff4d6d;
+      text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff99aa;
+      filter: drop-shadow(0 0 8px #ff4d6d);
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Sao lấp lánh */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.5); }
+    }
+    .floating-message {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff4d6d;
+  box-shadow: 0 0 10px rgba(255, 100, 150, 0.4);
+  animation: float-up 3.5s ease-out forwards;
+  z-index: 30;
+  white-space: nowrap;
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-150px);
+  }
+}
+@keyframes meteor {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, 100vh);
+    opacity: 0;
+  }
+}
+
+.meteor {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(to bottom, white, transparent);
+  transform: rotate(45deg);
+  opacity: 0.8;
+  animation: meteor 1.5s linear forwards;
+  z-index: 999;
+}
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: rise 6s linear forwards;
+  pointer-events: none;
+  z-index: 30;
+  padding: 15px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff4d6d;
+  text-shadow: 0 0 5px white;
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
+}
+#copyright {
+  position: fixed;
+  bottom: 80px;
+  right: 10px;
+  font-size: 14px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-shadow: 0 0 5px black;
+  z-index: 99999;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+#copyright-fixed {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  user-select: none;
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+
+  </style>
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+  <source src="phepmau.mp3" type="audio/mpeg">
+  Trình duyệt không hỗ trợ audio.
+</audio>
+  <div class="scene">
+    <div class="container" id="container"></div>
+    <!-- Trong <body>, sau container -->
+<div id="avatar-glow" style="
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+">
+
+  
+</div>
+
+<style>
+@keyframes pulse {
+  0% { box-shadow: 0 0 20px 10px rgba(255,105,180,0.5); }
+  50% { box-shadow: 0 0 30px 20px rgba(255,105,180,1); }
+  100% { box-shadow: 0 0 20px 10px rgba(255,105,180,0.5); }
+}
+#mascot-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 15;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#mascot-container:hover {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+#mascot {
+  width: 100px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 200, 255, 0.5));
+}
+
+</style>
+
+    <div class="stars" id="stars"></div>
+  </div>
+
+  <script>
+    const container = document.getElementById('container');
+      const imageList = [
+    "https://i.imgur.com/Z8a0fJG.png",
+    "https://i.imgur.com/hhgbwRf.png",
+    "https://i.imgur.com/E7Qtb4D.png"
+  ];
+
+  const videoList = [
+    "https://www.w3schools.com/html/mov_bbb.mp4",
+    "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+  ];
+
+   const totalImages = 20;
+
+for (let i = 0; i < totalImages; i++) {
+  const img = document.createElement('img');
+  const randomImage = imageList[Math.floor(Math.random() * imageList.length)];
+  img.src = randomImage;
+  img.className = 'falling-img';
+  img.style.left = Math.random() * 100 + 'vw';
+  img.style.top = -Math.random() * 100 + 'vh';
+  img.style.width = (Math.random() * 30 + 20) + 'px';
+  img.style.position = 'absolute';
+  img.style.animation = `fall ${Math.random() * 8 + 5}s linear infinite`;
+  img.style.animationDelay = Math.random() * 5 + 's';
+  img.style.zIndex = Math.floor(Math.random() * 3) + 1;
+  container.appendChild(img);
+}
+const totalVideos = 8;
+
+for (let i = 0; i < totalVideos; i++) {
+  const video = document.createElement('video');
+  const randomVideo = videoList[Math.floor(Math.random() * videoList.length)];
+  video.src = randomVideo;
+  video.className = 'falling-img';
+  video.style.left = Math.random() * 100 + 'vw';
+  video.style.top = -Math.random() * 100 + 'vh';
+  video.style.width = (Math.random() * 80 + 40) + 'px';
+  video.style.position = 'absolute';
+  video.style.animation = `fall ${Math.random() * 8 + 5}s linear infinite`;
+  video.style.animationDelay = Math.random() * 5 + 's';
+  video.style.zIndex = Math.floor(Math.random() * 3) + 1;
+  video.autoplay = true;
+  video.loop = true;
+  video.muted = true;
+  container.appendChild(video);
+}
+function spawnBubble() {
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+
+  const size = Math.random() * 40 + 20;
+  bubble.style.width = size + 'px';
+  bubble.style.height = size + 'px';
+  bubble.style.left = Math.random() * 100 + 'vw';
+  bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(255,255,255,0))`;
+
+  document.body.appendChild(bubble);
+
+  // Xóa sau khi animation kết thúc
+  bubble.addEventListener('animationend', () => {
+    bubble.remove();
+  });
+}
+
+// Tạo bong bóng liên tục
+setInterval(spawnBubble, 500); // mỗi 0.5s tạo 1 bong bóng
+
+
+
+
+    const starsContainer = document.getElementById('stars');
+
+    const totalItems = 100;
+    const hearts = ['❤️','💕','💖','💘'];
+
+    for (let i = 0; i < totalItems; i++) {
+      const el = document.createElement('div');
+      el.className = 'floating';
+
+      if (Math.random() < 0.7) {
+        el.innerText = 'Vương An 🧸';
+      } else {
+        el.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+        el.classList.add('heart');
+      }
+
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = -Math.random() * 100 + 'vh';
+      el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+      el.style.animationDuration = (Math.random() * 8 + 5) + 's';
+      el.style.animationDelay = (Math.random() * 5) + 's';
+      el.style.zIndex = Math.floor(Math.random() * 3); // thêm chiều sâu nhẹ
+
+      container.appendChild(el);
+    }
+
+    // Xoay theo chuột
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      const rotateX = y * 30;
+      const rotateY = x * 30;
+      container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    // Tạo sao
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 2 + 's';
+      starsContainer.appendChild(star);
+    }
+   
+const mascotImages = [
+  "https://i.imgur.com/IuVxwlr.gif",
+  "https://i.imgur.com/vvjIsyX.gif",
+  "https://i.imgur.com/KFAK3a3.gif"
+];
+let mascotIndex = 0;
+
+document.getElementById('mascot-container').addEventListener('click', () => {
+  mascotIndex = (mascotIndex + 1) % mascotImages.length;
+  document.getElementById('mascot').src = mascotImages[mascotIndex];
+
+  const msg = document.createElement('div');
+  msg.innerText = "🧸 Chào bạn!";
+  msg.style.position = 'absolute';
+  msg.style.top = '-40px';
+  msg.style.left = '0';
+  msg.style.background = 'rgba(255,255,255,0.9)';
+  msg.style.padding = '6px 12px';
+  msg.style.borderRadius = '12px';
+  msg.style.boxShadow = '0 0 8px rgba(0,0,0,0.2)';
+  msg.style.animation = 'float-up 2s ease forwards';
+  msg.style.fontSize = '14px';
+  msg.style.whiteSpace = 'nowrap';
+
+  const container = document.getElementById('mascot-container');
+  container.appendChild(msg);
+  setTimeout(() => msg.remove(), 2000);
+});
+
+
+
+  </script>
+  <!-- Trong <body>, trước </body> -->
+<div id="player" style="display:none;"></div>
+<script>
+  let tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  let firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  let player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'IcrbM1l_BoI', // ID từ link YouTube
+      events: {
+        'onReady': (event) => {
+          event.target.setVolume(50); // Âm lượng
+          event.target.playVideo();
+        }
+      },
+      playerVars: {
+        autoplay: 1,
+        loop: 1,
+        playlist: 'IcrbM1l_BoI',
+        controls: 0,
+        modestbranding: 1,
+        showinfo: 0
+      }
+    });
+  }
+  
+</script>
+<!-- 💌 Nút & Form Gửi lời nhắn -->
+<button id="openForm" style="
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 0 10px #ff99aa;
+  cursor: pointer;
+  z-index: 10;
+">
+  💌 Gửi lời nhắn
+</button>
+
+<div id="popupForm" style="
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 260px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  z-index: 20;
+">
+  <h3 style="margin-top:0;">💖 Gửi lời nhắn</h3>
+  <input type="text" placeholder="Tên bạn" style="width:100%;margin-bottom:10px;padding:8px;border-radius:8px;border:1px solid #ccc;">
+  <textarea placeholder="Lời nhắn..." style="width:100%;height:80px;padding:8px;border-radius:8px;border:1px solid #ccc;"></textarea>
+  <button onclick="submitMessage()" style="margin-top:10px;background:#ff4d6d;color:white;border:none;padding:8px 16px;border-radius:10px;">Gửi</button>
+</div>
+
+<script>
+  document.getElementById('openForm').onclick = () => {
+    const form = document.getElementById('popupForm');
+    form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+  };
+
+ function submitMessage() {
+  const name = document.querySelector('#popupForm input').value.trim();
+  const msg = document.querySelector('#popupForm textarea').value.trim();
+
+  if (name && msg) {
+    let messages = JSON.parse(localStorage.getItem('loveMessages') || '[]');
+    messages.push({ name, msg, time: new Date().toLocaleString() });
+    localStorage.setItem('loveMessages', JSON.stringify(messages));
+    alert("💌 Đã gửi lời nhắn! (Lưu trong trình duyệt)");
+
+     // Tạo bong bóng chứa lời nhắn bay lên
+const bubble = document.createElement('div');
+bubble.className = 'bubble';
+bubble.innerText = `${name}: ${msg}`;
+
+const size = Math.random() * 50 + 80;
+bubble.style.width = size + 'px';
+bubble.style.height = size + 'px';
+bubble.style.left = Math.random() * (window.innerWidth - size) + 'px';
+
+document.body.appendChild(bubble);
+setTimeout(() => bubble.remove(), 7000);
+
+
+  } else {
+    alert("Bạn cần nhập tên và lời nhắn!");
+  }
+
+  document.getElementById('popupForm').style.display = 'none';
+}
+
+</script>
+<a href="https://m.me/ngochieu271" target="_blank" style="
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 0 10px #ff99aa;
+  cursor: pointer;
+  z-index: 10;
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+">
+  💌 Gửi lời nhắn
+</a>
+<!-- Trong <body>, ngay trước </body> -->
+
+<div id="mascot-container">
+  <img id="mascot" src="mèo.gif" alt="Mascot" />
+</div>
+<script>
+function createMeteor() {
+  const meteor = document.createElement('div');
+  meteor.className = 'meteor';
+  meteor.style.left = Math.random() * window.innerWidth * 0.5 + 'px';
+  meteor.style.top = Math.random() * window.innerHeight * 0.2 + 'px';
+  document.body.appendChild(meteor);
+  setTimeout(() => meteor.remove(), 2000);
+}
+
+// Mỗi 8 giây tạo một sao băng
+setInterval(createMeteor, 8000);
+
+
+
+</script>
+<script>
+function spawnCloud() {
+  const cloud = document.createElement('div');
+  cloud.className = 'cloud';
+
+  const options = [
+    '☁️ Mai Ngọc Hiếu 🧸 ☁️',
+    '☁️ ❤️ ☁️',
+    '☁️ Yêu thương ☁️',
+    '☁️ 𝓛𝓸𝓿𝓮 ☁️',
+    '☁️ Nhớ bạn ☁️'
+  ];
+
+  cloud.innerText = options[Math.floor(Math.random() * options.length)];
+
+  cloud.style.top = Math.random() * 80 + 'vh';
+  cloud.style.left = '-200px'; // 🚨 CỰC KỲ QUAN TRỌNG
+  cloud.style.fontSize = Math.random() * 20 + 18 + 'px';
+
+  document.body.appendChild(cloud);
+
+  setTimeout(() => cloud.remove(), 31000);
+}
+
+
+// Tạo mây mỗi 10 giây
+setInterval(spawnCloud, 10000);
+
+// Có thể tạo một đám mây ban đầu để thử ngay
+spawnCloud();
+</script>
+<!-- Nút bật nhạc
+<button onclick="playMusic()" style="
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  box-shadow: 0 0 10px #ff99aa;
+  cursor: pointer;
+">
+  🎵 Bật nhạc nền
+</button> -->
+
+<!-- Audio -->
+
+
+<script>
+function playMusic() {
+  const music = document.getElementById('bg-music');
+  music.play();
+}
+</script>
+<style>
+  .cloud {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    font-size: 24px;
+    white-space: nowrap;
+    z-index: 2;
+    animation: cloudMove 30s linear forwards;
+    color: white;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ccc;
+    pointer-events: none;
+  }
+
+  @keyframes cloudMove {
+    0% {
+      left: -200px;
+      opacity: 0.8;
+    }
+    100% {
+      left: 110vw;
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  function spawnCloud() {
+    const cloud = document.createElement('div');
+    cloud.className = 'cloud';
+
+    const options = [
+      '☁️ Vương An 🧸 ☁️',
+      '☁️ ❤️ ☁️',
+      '☁️ Yêu thương ☁️',
+      '☁️ 𝓛𝓸𝓿𝓮 ☁️',
+      '☁️ Nhớ bạn ☁️'
+    ];
+
+    cloud.innerText = options[Math.floor(Math.random() * options.length)];
+
+    cloud.style.top = Math.random() * 80 + 'vh';
+    cloud.style.fontSize = Math.random() * 20 + 18 + 'px';
+
+    // Bắt đầu bên trái ngoài màn hình
+    cloud.style.left = '-200px';
+
+    document.body.appendChild(cloud);
+
+    setTimeout(() => cloud.remove(), 31000);
+  }
+
+  // Gọi lần đầu để test ngay
+  spawnCloud();
+
+  // Gọi lại mỗi 10 giây
+  setInterval(spawnCloud, 10000);
+</script>
+<script>
+// Tự động chèn dòng bản quyền và khóa lại
+(function() {
+  const div = document.createElement('div');
+  div.innerHTML = "© Được tạo bởi <strong>Mai Ngọc Hiếu</strong>";
+  div.style.position = 'fixed';
+  div.style.top = '10px';
+div.style.right = '10px';
+div.style.bottom = '10px';
+div.style.left = '10pxpx';
+
+  div.style.background = 'black';
+  div.style.color = 'white';
+  div.style.padding = '6px 12px';
+  div.style.fontSize = '14px';
+  div.style.borderRadius = '8px';
+  div.style.zIndex = '999999';
+  div.style.fontFamily = 'Arial, sans-serif';
+  div.style.userSelect = 'none';
+  div.setAttribute("id", "copyright-lock");
+  Object.freeze(div); // Khóa đối tượng lại
+  document.body.appendChild(div);
+
+  // Ngăn bị xóa
+  const observer = new MutationObserver(() => {
+    const el = document.getElementById("copyright-lock");
+    if (!el) document.body.appendChild(div);
+  });
+  observer.observe(document.body, { childList: true });
+})();
+</script>
+<script>
+(function() {
+  const el = document.createElement("div");
+  el.id = "copyright-fixed";
+  el.innerHTML = "© Được tạo bởi <strong>Mai Ngọc Hiếu</strong>";
+  document.body.appendChild(el);
+
+  const observer = new MutationObserver(() => {
+    if (!document.getElementById("copyright-fixed")) {
+      document.body.appendChild(el);
+    }
+  });
+
+  observer.observe(document.body, { childList: true });
+})();
+</script>
+
+
+
+
+</body>
+</html>

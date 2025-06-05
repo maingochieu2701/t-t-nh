@@ -280,6 +280,18 @@
   </style>
 </head>
 <body>
+  <div id="bg-image" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -10;
+  transition: background-image 1s ease-in-out;
+"></div>
+
   <audio id="bg-music" autoplay></audio>
 
   <div class="scene">
@@ -769,6 +781,29 @@ music.play();
 
 // Khi bài hát kết thúc, phát bài tiếp theo
 music.addEventListener('ended', playNextTrack);
+</script>
+<script>
+const bgImages = [
+  "./image/gen-h-vi.jpg",
+  "./image/gen-h-vi1.jpg",
+  "./image/gen-h-vi2.jpg",
+  "./image/gen-h-vi3.jpg",
+  "./image/gen-h-vi4.jpg"
+];
+
+let currentBg = 0;
+const bgDiv = document.getElementById("bg-image");
+
+function switchBackgroundImage() {
+  bgDiv.style.backgroundImage = `url('${bgImages[currentBg]}')`;
+  currentBg = (currentBg + 1) % bgImages.length;
+}
+
+// Gọi lần đầu
+switchBackgroundImage();
+
+// Chuyển ảnh nền mỗi 10 giây
+setInterval(switchBackgroundImage, 10000);
 </script>
 
 

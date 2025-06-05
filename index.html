@@ -744,11 +744,8 @@ function playMusic() {
   const div = document.createElement('div');
   div.innerHTML = "© Được tạo bởi <strong>Mai Ngọc Hiếu</strong>";
   div.style.position = 'fixed';
-  div.style.top = '10px';
-div.style.right = '10px';
-div.style.bottom = '10px';
-div.style.left = '10pxpx';
-
+  div.style.bottom = '8px';
+  div.style.left = '8px';
   div.style.background = 'black';
   div.style.color = 'white';
   div.style.padding = '6px 12px';
@@ -766,22 +763,6 @@ div.style.left = '10pxpx';
     const el = document.getElementById("copyright-lock");
     if (!el) document.body.appendChild(div);
   });
-  observer.observe(document.body, { childList: true });
-})();
-</script>
-<script>
-(function() {
-  const el = document.createElement("div");
-  el.id = "copyright-fixed";
-  el.innerHTML = "© Được tạo bởi <strong>Mai Ngọc Hiếu</strong>";
-  document.body.appendChild(el);
-
-  const observer = new MutationObserver(() => {
-    if (!document.getElementById("copyright-fixed")) {
-      document.body.appendChild(el);
-    }
-  });
-
   observer.observe(document.body, { childList: true });
 })();
 </script>

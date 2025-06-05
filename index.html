@@ -749,6 +749,64 @@ function playMusic() {
   });
   observer.observe(document.body, { childList: true, subtree: true });
 </script>
+<video id="bg-video" autoplay muted loop playsinline style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  display: none;
+"></video>
+
+<div id="bg-image" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+"></div>
+<script>
+const bgVideos = [
+  "./image/vi8.mp4",
+  "./image/video1.mp4"
+];
+
+const bgImages = [
+  "./image/gen-h-vi.jpg",
+  "./image/gen-h-vi2.jpg",
+];
+
+let bgIndex = 0;
+let useVideo = true;
+
+function switchBackground() {
+  const videoEl = document.getElementById('bg-video');
+  const imageEl = document.getElementById('bg-image');
+
+  if (useVideo) {
+    const src = bgVideos[bgIndex % bgVideos.length];
+    videoEl.src = src;
+    videoEl.style.display = 'block';
+    imageEl.style.backgroundImage = '';
+  } else {
+    const src = bgImages[bgIndex % bgImages.length];
+    videoEl.pause();
+    videoEl.removeAttribute('src'); // tránh audio load
+    videoEl.style.display = 'none';
+    imageEl.style.backgroundImage = `url('${src}')`;
+  }
+
+  bgIndex++;
+  useVideo = !useVideo; // đổi qua lại
+}
+
+// Gọi lần đầu và lặp mỗi 15 giây
+switchBackground();
+setInterval(switchBackground, 15000);
+</script>
 
 
 

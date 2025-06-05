@@ -737,7 +737,19 @@ function playMusic() {
 
   // Gọi lại mỗi 10 giây
   setInterval(spawnCloud, 10000);
+  
 </script>
+<div id="copyright-fixed">© 2025 Mai Ngọc Hiếu - All rights reserved</div>
+<script>
+  const cp = document.getElementById('copyright-fixed');
+  const observer = new MutationObserver(() => {
+    if (!document.body.contains(cp)) {
+      document.body.appendChild(cp);
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
+
 
 
 

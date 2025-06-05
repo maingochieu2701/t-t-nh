@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   
   <meta charset="UTF-8">
-  <title>Vương An 🧸 Lung Linh</title>
+  <title>Mai Ngọc Hiếu</title>
   
   <style>
     img, video {
@@ -280,10 +280,8 @@
   </style>
 </head>
 <body>
-  <audio id="bg-music" autoplay loop>
-  <source src="phepmau.mp3" type="audio/mpeg">
-  Trình duyệt không hỗ trợ audio.
-</audio>
+  <audio id="bg-music" autoplay></audio>
+
   <div class="scene">
     <div class="container" id="container"></div>
     <!-- Trong <body>, sau container -->
@@ -748,6 +746,29 @@ function playMusic() {
     }
   });
   observer.observe(document.body, { childList: true, subtree: true });
+</script>
+<script>
+const playlist = [
+  "phepmau.mp3", // Bài hát local
+  "./audio/dom.mp3",
+  "./audio/thaytoiyeucoay.mp3",
+  "./audio/hihi.mp3",
+];
+
+let currentTrack = 0;
+const music = document.getElementById('bg-music');
+
+function playNextTrack() {
+  currentTrack = (currentTrack + 1) % playlist.length;
+  music.src = playlist[currentTrack];
+  music.play();
+}
+
+music.src = playlist[currentTrack];
+music.play();
+
+// Khi bài hát kết thúc, phát bài tiếp theo
+music.addEventListener('ended', playNextTrack);
 </script>
 
 

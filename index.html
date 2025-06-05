@@ -102,13 +102,13 @@
     font-family: 'Segoe UI', sans-serif;
   }
 
-  /* @keyframes skyCycle { */
-    /* 0%   { background: linear-gradient(to top, #ff9a9e, #fad0c4); }   hồng sáng */
-    /* 25%  { background: linear-gradient(to top, #a18cd1, #fbc2eb); }   /* tím hồng */
-    /* 50%  { background: linear-gradient(to top, #2b1055, #7597de); }   đêm xanh */
-    /* 75%  { background: linear-gradient(to top, #fddb92, #d1fdff); }   sáng sớm */
-    /* 100% { background: linear-gradient(to top, #ff9a9e, #fad0c4); }   quay lại hoàng hôn */
-  /* }  */
+  @keyframes skyCycle {
+    0%   { background: linear-gradient(to top, #ff9a9e, #fad0c4); }   /* hồng sáng */
+    25%  { background: linear-gradient(to top, #a18cd1, #fbc2eb); }   /* tím hồng */
+    50%  { background: linear-gradient(to top, #2b1055, #7597de); }   /* đêm xanh */
+    75%  { background: linear-gradient(to top, #fddb92, #d1fdff); }   /* sáng sớm */
+    100% { background: linear-gradient(to top, #ff9a9e, #fad0c4); }   /* quay lại hoàng hôn */
+  }
 
 
     .scene {
@@ -280,6 +280,30 @@
   </style>
 </head>
 <body>
+  <script>
+const bgImages = [
+  "./image/gen-h-vi.jpg",
+  "./image/gen-h-vi1.jpg",
+  "./image/gen-h-vi2.jpg",
+  "./image/gen-h-vi3.jpg",
+  "./image/gen-h-vi4.jpg"
+];
+
+let currentBg = 0;
+const bgDiv = document.getElementById("bg-image");
+
+function switchBackgroundImage() {
+  bgDiv.style.backgroundImage = `url('${bgImages[currentBg]}')`;
+  currentBg = (currentBg + 1) % bgImages.length;
+}
+
+// Gọi lần đầu
+switchBackgroundImage();
+
+// Chuyển ảnh nền mỗi 10 giây
+setInterval(switchBackgroundImage, 10000);
+</script>
+
   <div id="bg-image" style="
   position: fixed;
   top: 0; left: 0;
@@ -781,29 +805,6 @@ music.play();
 
 // Khi bài hát kết thúc, phát bài tiếp theo
 music.addEventListener('ended', playNextTrack);
-</script>
-<script>
-const bgImages = [
-  "./image/gen-h-vi.jpg",
-  "./image/gen-h-vi1.jpg",
-  "./image/gen-h-vi2.jpg",
-  "./image/gen-h-vi3.jpg",
-  "./image/gen-h-vi4.jpg"
-];
-
-let currentBg = 0;
-const bgDiv = document.getElementById("bg-image");
-
-function switchBackgroundImage() {
-  bgDiv.style.backgroundImage = `url('${bgImages[currentBg]}')`;
-  currentBg = (currentBg + 1) % bgImages.length;
-}
-
-// Gọi lần đầu
-switchBackgroundImage();
-
-// Chuyển ảnh nền mỗi 10 giây
-setInterval(switchBackgroundImage, 10000);
 </script>
 
 
